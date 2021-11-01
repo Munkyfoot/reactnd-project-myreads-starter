@@ -5,9 +5,9 @@ class Bookshelf extends Component {
     render() {
         return (
             <div className="bookshelf">
-                <h2 className="bookshelf-title">Currently Reading</h2>
+                <h2 className="bookshelf-title">{this.props.shelf.name}</h2>
                 <div className="bookshelf-books">
-                    <BooksGrid />
+                    <BooksGrid books={this.props.books} />
                 </div>
             </div>
         )

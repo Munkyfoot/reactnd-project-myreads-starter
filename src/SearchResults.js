@@ -5,7 +5,7 @@ class SearchResults extends Component {
     render() {
         return (
             <div className="search-books-results">
-                <BooksGrid />
+                <BooksGrid books={[]} />
             </div>
         )
     }

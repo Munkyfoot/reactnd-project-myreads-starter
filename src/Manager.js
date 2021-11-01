@@ -11,7 +11,9 @@ class Manager extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <Bookshelf />
+                        {this.props.shelves.map((shelf) => (
+                            <Bookshelf key={shelf.id} shelf={shelf} books={this.props.books.filter((book) => (book.shelf === shelf.id))} />
+                        ))}
                     </div>
                 </div>
                 <div className="open-search">
