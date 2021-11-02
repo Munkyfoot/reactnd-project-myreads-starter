@@ -7,7 +7,7 @@ class Bookshelf extends Component {
             <div className="bookshelf">
                 <h2 className="bookshelf-title">{this.props.shelf.name}</h2>
                 <div className="bookshelf-books">
-                    <BooksGrid books={this.props.books} />
+                    <BooksGrid books={this.props.books} updateBook={this.props.updateBook} />
                 </div>
             </div>
         )

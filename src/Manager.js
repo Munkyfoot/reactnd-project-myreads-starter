@@ -12,7 +12,7 @@ class Manager extends Component {
                 <div className="list-books-content">
                     <div>
                         {this.props.shelves.map((shelf) => (
-                            <Bookshelf key={shelf.id} shelf={shelf} books={this.props.books.filter((book) => (book.shelf === shelf.id))} />
+                            <Bookshelf key={shelf.id} shelf={shelf} books={this.props.books.filter((book) => (book.shelf === shelf.id))} updateBook={this.props.updateBook} />
                         ))}
                     </div>
                 </div>

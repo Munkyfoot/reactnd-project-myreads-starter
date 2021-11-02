@@ -5,23 +5,8 @@ import * as BooksAPI from './BooksAPI'
 
 class Search extends Component {
     state = {
-        books: [],
+        queryBooks: [],
         query: ""
-    }
-
-    setBooks = (queryBooks) => {
-        const books = queryBooks.map((queryBook) => {
-            const existingBooks = this.props.books.filter((book) => book.id === queryBook.id)
-            return existingBooks.length === 0 ? queryBook : existingBooks[0]
-        })
-
-        this.setState(() => ({
-            books: books
-        }))
-    }
-
-    clearBooks = () => {
-        this.setBooks([])
     }
 
     setQuery = (query) => {
@@ -32,14 +17,27 @@ class Search extends Component {
         })
     }
 
+    setQueryBooks = (queryBooks) => {
+        this.setState(() => ({
+            queryBooks: queryBooks.map((queryBook) => {
+                const existingBooks = this.props.books.filter((book) => book.id === queryBook.id)
+                return existingBooks.length === 0 ? queryBook : existingBooks[0]
+            })
+        }))
+    }
+
+    clearQueryBooks = () => {
+        this.setQueryBooks([])
+    }
+
     updateSearch = () => {
         this.state.query.length > 0 ?
-            BooksAPI.search(this.state.query).then((books) => {
-                console.log(books)
-                "error" in books ? this.clearBooks() : this.setBooks(books)
+            BooksAPI.search(this.state.query).then((queryBooks) => {
+                console.log(queryBooks)
+                "error" in queryBooks ? this.clearQueryBooks() : this.setQueryBooks(queryBooks)
             }
             )
-            : this.clearBooks()
+            : this.clearQueryBooks()
 
         this.props.history.push({
             pathname: this.props.location.pathname,
@@ -55,11 +53,17 @@ class Search extends Component {
         }
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.books !== this.props.books) {
+            this.updateSearch()
+        }
+    }
+
     render() {
         return (
             <div className="search-books">
                 <SearchBar query={this.state.query} setQuery={this.setQuery} />
-                <SearchResults books={this.state.books} />
+                <SearchResults books={this.state.queryBooks} updateBook={this.props.updateBook} />
             </div>
         )
     }
