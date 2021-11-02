@@ -41,6 +41,14 @@ class BooksApp extends React.Component {
   }
 
   updateBook = (book, shelf) => {
+    // Update book locally for responsiveness
+    const tempBooks = this.state.books.filter((b) => (b.id !== book.id))
+    const tempBook = book
+    tempBook.shelf = shelf
+    tempBooks.push(tempBook)
+    this.setBooks(tempBooks)
+
+    // Update book in backend
     BooksAPI.update(book, shelf).then((book) => {
       this.updateBooks()
     })
