@@ -27,9 +27,7 @@ class BooksApp extends React.Component {
   setBooks = (books) => {
     this.setState(() => ({
       books: books
-    }), () => {
-      console.log(this.state.books);
-    })
+    }))
   }
 
   updateBooks = () => {

@@ -33,7 +33,6 @@ class Search extends Component {
     updateSearch = () => {
         this.state.query.length > 0 ?
             BooksAPI.search(this.state.query).then((queryBooks) => {
-                console.log(queryBooks)
                 "error" in queryBooks ? this.clearQueryBooks() : this.setQueryBooks(queryBooks)
             }
             )
