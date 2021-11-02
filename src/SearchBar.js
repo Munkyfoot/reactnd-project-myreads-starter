@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 class SearchBar extends Component {
+    handleChange = (value) => {
+        this.props.setQuery(value)
+    }
+
     render() {
         return (
             <div className="search-books-bar">
@@ -18,7 +22,13 @@ class SearchBar extends Component {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                    <input type="text" placeholder="Search by title or author" />
+                    <input
+                        autoFocus
+                        type="text"
+                        placeholder="Search by title or author"
+                        value={this.props.query}
+                        onChange={(e) => this.handleChange(e.target.value)}
+                    />
 
                 </div>
             </div>
