@@ -41,7 +41,7 @@ body, .app {
 
 .bookshelf-title {
   font-weight: 300;
-  border-bottom: 1px solid #999;
+  border-bottom: 2px var(--green-light) solid;
 }
 
 .bookshelf-books {
@@ -64,7 +64,6 @@ body, .app {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 28px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   font-size: 0;
   outline: 0;
   transition: background-color 0.1s ease-out;
@@ -85,7 +84,7 @@ body, .app {
   left: 0;
   z-index: 5;
   display: flex;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 0 6px rgba(0, 0, 0, 0.23);
+  border-bottom: 2px var(--green-light) solid;
 }
 
 .search-books-input-wrapper {
@@ -144,23 +143,25 @@ button:active {
 
 .books-grid li {
   padding: 10px 15px;
-  text-align: left;
+  text-align: center;
 }
 
 .book {
   width: 140px;
-}
-
-.book-title, .book-authors {
-  font-size: 0.8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .book-title {
   margin-top: 10px;
+  font-size: 0.9em;
 }
 
 .book-authors {
   color: #777;
+  font-size: 0.8em;
 }
 
 .book-top {
@@ -172,17 +173,17 @@ button:active {
 
 .book-shelf-changer {
   position: absolute;
-  right: 0;
+  right: -10px;
   bottom: -10px;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: var(--green-mid);
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 20px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border: 2px #eee solid;
   transition: background-color 0.1s ease-out;
 }
 
@@ -200,12 +201,9 @@ button:active {
 /* book cover */
 
 .book-cover {
-  border-radius: 3px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background: rgba(0,0,0,0.5);
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center;
+  background-position: center bottom;
 }
 
 .book-cover-title {
