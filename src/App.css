@@ -7,21 +7,21 @@ body {
 }
 
 body, .app {
-  background: white;
+  background: #eee;
 }
 
 /* main page */
 
 .list-books-title {
   padding: 10px 0;
-  background: #2e7c31;
+  background: var(--green-gradient);
+  color: #fff;
   text-align: center;
 }
 
 .list-books-title h1 {
-  font-weight: 400;
+  font-weight: 300;
   margin: 0;
-  color: white;
 }
 
 .list-books-content {
@@ -40,7 +40,8 @@ body, .app {
 }
 
 .bookshelf-title {
-  border-bottom: 1px solid #dedede;
+  font-weight: 300;
+  border-bottom: 1px solid #999;
 }
 
 .bookshelf-books {
@@ -58,36 +59,38 @@ body, .app {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #2e7d32;
+  background: var(--green-mid);
   background-image: url('./icons/add.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 28px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   font-size: 0;
   outline: 0;
+  transition: background-color 0.1s ease-out;
+  cursor: pointer;
 }
 
 .open-search button:hover {
-  background-color: rgb(0, 102, 0);
+  background-color: var(--green-dark);
 }
-
 
 /* search page */
 
 .search-books-bar {
+  background: white;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   z-index: 5;
   display: flex;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 0 6px rgba(0, 0, 0, 0.23);
 }
 
 .search-books-input-wrapper {
   flex: 1;
-  background: #e9e;
+  background: #eee;
 }
 
 .search-books-bar input {
@@ -111,6 +114,12 @@ body, .app {
   font-size: 0;
   border: none;
   outline: none;
+  opacity: 0.8;
+  transition: opacity 0.1s ease-out;
+}
+
+.close-search:hover {
+  opacity: 1;
 }
 
 button:active {
@@ -142,8 +151,7 @@ button:active {
   width: 140px;
 }
 
-.book-title,
-.book-authors {
+.book-title, .book-authors {
   font-size: 0.8em;
 }
 
@@ -152,7 +160,7 @@ button:active {
 }
 
 .book-authors {
-  color: #999;
+  color: #777;
 }
 
 .book-top {
@@ -169,12 +177,17 @@ button:active {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #60ac5d;
+  background: var(--green-mid);
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 20px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: background-color 0.1s ease-out;
+}
+
+.book-shelf-changer:hover {
+  background-color: var(--green-dark);
 }
 
 .book-shelf-changer select {
@@ -187,8 +200,9 @@ button:active {
 /* book cover */
 
 .book-cover {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  background: #eee;
+  border-radius: 3px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background: rgba(0,0,0,0.5);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -198,4 +212,11 @@ button:active {
   padding: 20px 10px 0;
   text-align: center;
   font-size: 0.8em;
+}
+
+:root {
+  --green-light: #60ac5d;
+  --green-mid: #2e7d32;
+  --green-dark: #1e6d22;
+  --green-gradient: linear-gradient(to top right, var(--green-mid), var(--green-light));
 }
