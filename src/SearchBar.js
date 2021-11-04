@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class SearchBar extends Component {
+    static propTypes = {
+        query: PropTypes.string.isRequired,
+        setQuery: PropTypes.func.isRequired
+    }
+
     handleChange = (value) => {
         this.props.setQuery(value)
     }

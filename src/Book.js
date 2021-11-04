@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import placeholder from './icons/placeholder.svg'
+import PropTypes from 'prop-types'
 
 class Book extends Component {
+    static propTypes = {
+        book: PropTypes.object.isRequired,
+        updateBook: PropTypes.func.isRequired
+    }
+
     handleChange = (value) => {
         this.props.updateBook(this.props.book, value)
     }
