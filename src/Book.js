@@ -25,7 +25,7 @@ class Book extends Component {
                         >
                             <option value="move" disabled>Move to...</option>
                             {this.props.shelves.map((shelf) => (
-                                <option value={shelf.id}>{shelf.name}</option>
+                                <option key={shelf.id} value={shelf.id}>{shelf.name}</option>
                             ))}
                             <option value="none">None</option>
                         </select>
