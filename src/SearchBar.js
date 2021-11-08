@@ -8,6 +8,7 @@ class SearchBar extends Component {
         setQuery: PropTypes.func.isRequired
     }
 
+    // Pass value from search input to Search's setQuery method, called by input's onChange
     handleChange = (value) => {
         this.props.setQuery(value)
     }

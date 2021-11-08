@@ -13,10 +13,13 @@ class Search extends Component {
     }
 
     state = {
+        // An array used to store books retrieved from BooksAPI search
         queryBooks: [],
+        // A string used to perform a search query from BooksAPI
         query: ""
     }
 
+    // Set the query string in state and calls updateSearch after state is updated 
     setQuery = (query) => {
         this.setState(() => ({
             query: query
@@ -25,6 +28,7 @@ class Search extends Component {
         })
     }
 
+    // Take array of books from BooksAPI search response and replace book objects with book object of same ID if present in App.state.books
     setQueryBooks = (queryBooks) => {
         this.setState(() => ({
             queryBooks: queryBooks.map((queryBook) => {
@@ -34,10 +38,13 @@ class Search extends Component {
         }))
     }
 
+    // Empty queryBooks array in local state
     clearQueryBooks = () => {
         this.setQueryBooks([])
     }
 
+    // Retrieve array of books from BooksAPI search method using query string in local state and pass results to setQueryBooks
+    // Call clearQueryBooks if response contains an error
     updateSearch = () => {
         this.state.query.length > 0 ?
             BooksAPI.search(this.state.query).then((queryBooks) => {
@@ -46,12 +53,14 @@ class Search extends Component {
             )
             : this.clearQueryBooks()
 
+        // Push this query to router history to allow expected functionality of browser UI
         this.props.history.push({
             pathname: this.props.location.pathname,
             search: this.state.query.length > 0 ? new URLSearchParams({ q: this.state.query }).toString() : ""
         })
     }
 
+    // When component loads, check for search query in url and update local state if present
     componentDidMount() {
         let searchParams = new URLSearchParams(this.props.location.search)
 
@@ -60,6 +69,7 @@ class Search extends Component {
         }
     }
 
+    // On change of state in component or parent, call updateSearch if App.state.books array has changed
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.books !== this.props.books) {
             this.updateSearch()

@@ -8,6 +8,7 @@ class Book extends Component {
         updateBook: PropTypes.func.isRequired
     }
 
+    // Pass book object and shelf id to App's updateBook method, called by select's onChange
     handleChange = (value) => {
         this.props.updateBook(this.props.book, value)
     }
