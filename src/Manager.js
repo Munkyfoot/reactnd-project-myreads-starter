@@ -11,7 +11,7 @@ const Manager = (props) => (
         <div className="list-books-content">
             <div>
                 {props.shelves.map((shelf) => (
-                    <Bookshelf key={shelf.id} shelf={shelf} books={props.books.filter((book) => (book.shelf === shelf.id))} updateBook={props.updateBook} />
+                    <Bookshelf key={shelf.id} shelf={shelf} shelves={props.shelves} books={props.books.filter((book) => (book.shelf === shelf.id))} updateBook={props.updateBook} />
                 ))}
             </div>
         </div>

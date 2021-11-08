@@ -70,7 +70,7 @@ class Search extends Component {
         return (
             <div className="search-books">
                 <SearchBar query={this.state.query} setQuery={this.setQuery} />
-                <SearchResults books={this.state.queryBooks} updateBook={this.props.updateBook} />
+                <SearchResults shelves={this.props.shelves} books={this.state.queryBooks} updateBook={this.props.updateBook} />
             </div>
         )
     }

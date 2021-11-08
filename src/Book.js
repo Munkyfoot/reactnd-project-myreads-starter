@@ -23,9 +23,9 @@ class Book extends Component {
                             onChange={(e) => this.handleChange(e.target.value)}
                         >
                             <option value="move" disabled>Move to...</option>
-                            <option value="currentlyReading">Currently Reading</option>
-                            <option value="wantToRead">Want to Read</option>
-                            <option value="read">Read</option>
+                            {this.props.shelves.map((shelf) => (
+                                <option value={shelf.id}>{shelf.name}</option>
+                            ))}
                             <option value="none">None</option>
                         </select>
                     </div>
